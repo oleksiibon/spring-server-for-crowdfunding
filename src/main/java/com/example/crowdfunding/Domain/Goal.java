@@ -11,9 +11,22 @@ public class Goal {
     private String name;
     private String picture;
     private Integer cost;
+    @ManyToOne
+    @JoinColumn(name = "creator_id")
+    private User creator;
 
     public Long getId() {
         return id;
+    }
+
+    public Goal() {
+    }
+
+    public Goal(String name, String picture, Integer cost, User creator) {
+        this.name = name;
+        this.picture = picture;
+        this.cost = cost;
+        this.creator = creator;
     }
 
     public void setId(Long id) {
