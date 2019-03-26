@@ -1,4 +1,4 @@
-package com.example.crowdfunding.Domain;
+package com.example.crowdfunding.DTO;
 
 public class GoalDTO {
     public Long id;
@@ -6,5 +6,6 @@ public class GoalDTO {
     public String picture;
     public Integer cost;
     public Long creatorId;
+    public Long categoryId;
 
 }

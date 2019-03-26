@@ -1,5 +1,7 @@
 package com.example.crowdfunding.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,6 +15,7 @@ public class User {
     private String email;
     private Integer balance;
     @OneToMany(mappedBy = "creator")
+    @JsonIgnore
     private Set<Goal> goals;
 
     public Long getId() {
