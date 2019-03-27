@@ -33,11 +33,17 @@ public class GoalController {
         return goalRepo.findAll();
     }
 
+    @GetMapping("{id}")
+    public Goal goal(@PathVariable("id") Goal goal) {
+        return goal;
+    }
+
+
     @PostMapping
     public Goal add(@RequestBody GoalDTO goal){
         User user = userRepo.findById(goal.creatorId).orElse(null);
         Category category = categoryRepo.findById(goal.categoryId).orElse(null);
-        Goal goalForSave = new Goal(goal.name, goal.picture, goal.cost, user, category);
+        Goal goalForSave = new Goal(goal.name, goal.picture, goal.cost, user, category, goal.description);
         return goalRepo.save(goalForSave);
     }
 }

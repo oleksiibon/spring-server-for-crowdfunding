@@ -12,6 +12,7 @@ public class Goal {
     private String name;
     private String picture;
     private Integer cost;
+    private String description;
     @ManyToOne
     @JoinColumn(name = "creator_id")
     private User creator;
@@ -25,14 +26,22 @@ public class Goal {
     public Goal() {
     }
 
-    public Goal(String name, String picture, Integer cost, User creator, Category category) {
+    public Goal(String name, String picture, Integer cost, User creator, Category category, String description) {
         this.name = name;
         this.picture = picture;
         this.cost = cost;
         this.creator = creator;
         this.category = category;
+        this.description = description;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Category getCategory() {
         return category;
