@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class DonationDTO {
     public LocalDate date;
-    public Long userId;
+    public String userId;
     public Long goalId;
     public Integer amount;
 }

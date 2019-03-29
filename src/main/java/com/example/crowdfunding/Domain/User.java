@@ -1,6 +1,8 @@
 package com.example.crowdfunding.Domain;
 
+import com.example.crowdfunding.view.Views;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -8,16 +10,32 @@ import java.util.Set;
 @Entity
 @Table(name = "usr")
 public class User {
+    @JsonView(Views.Public.class)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonView(Views.Public.class)
     private String name;
+    @JsonView(Views.Public.class)
     private String email;
+    @JsonView(Views.Public.class)
     private Integer balance;
-    @OneToMany(mappedBy = "creator")
+    @JsonView(Views.Public.class)
+    private String username;
     @JsonIgnore
+    @OneToMany(mappedBy = "creator")
     private Set<Goal> goals;
 
+    public Set<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(Set<Donation> donations) {
+        this.donations = donations;
+    }
+    @OneToMany(mappedBy = "user")
+    @JsonView(Views.User.class)
+    private Set<Donation> donations;
     public Long getId() {
         return id;
     }

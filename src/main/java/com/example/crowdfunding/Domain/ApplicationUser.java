@@ -1,12 +1,11 @@
 package com.example.crowdfunding.Domain;
 
-import com.example.crowdfunding.Security.model.Authority;
+import com.example.crowdfunding.security.model.Authority;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -25,9 +24,6 @@ public class ApplicationUser {
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "id")})
     private List<Authority> authorities;
-    @OneToOne
-    @JoinColumn(name = "user_details_id")
-    private User user;
 
     public Integer getId() {
         return id;

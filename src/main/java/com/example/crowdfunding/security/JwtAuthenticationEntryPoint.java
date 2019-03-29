@@ -1,4 +1,4 @@
-package com.example.crowdfunding.Security;
+package com.example.crowdfunding.security;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

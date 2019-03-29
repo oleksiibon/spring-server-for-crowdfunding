@@ -1,6 +1,6 @@
-package com.example.crowdfunding.Security;
+package com.example.crowdfunding.security;
 
-import com.example.crowdfunding.Security.service.JwtUserDetailsService;
+import com.example.crowdfunding.security.service.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

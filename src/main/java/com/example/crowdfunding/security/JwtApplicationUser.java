@@ -1,4 +1,4 @@
-package com.example.crowdfunding.Security;
+package com.example.crowdfunding.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

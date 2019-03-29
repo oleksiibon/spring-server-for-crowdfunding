@@ -2,11 +2,10 @@ package com.example.crowdfunding.Controller;
 
 import com.example.crowdfunding.Domain.User;
 import com.example.crowdfunding.repo.UserDetailsRepo;
+import com.example.crowdfunding.view.Views;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,9 +20,15 @@ public class UserController {
         this.userRepo = userRepo;
     }
 
+    @JsonView(Views.User.class)
     @GetMapping
     public List<User> getGoals() {
-        List<User> users = userRepo.findAll();
-        users.stream().forEach(user -> user.getD);
+        return userRepo.findAll();
+    }
+
+    @JsonView(Views.User.class)
+    @GetMapping("{username}")
+    public User getUsers(@PathVariable String username) {
+        return userRepo.findByUsername(username);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.crowdfunding.Security;
+package com.example.crowdfunding.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Clock;

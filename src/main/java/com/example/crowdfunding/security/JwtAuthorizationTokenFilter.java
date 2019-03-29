@@ -1,4 +1,4 @@
-package com.example.crowdfunding.Security;
+package com.example.crowdfunding.security;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,7 +5,7 @@ public class GoalDTO {
     public String picture;
     public String description;
     public Integer cost;
-    public Long creatorId;
+    public String creatorId;
     public Long categoryId;
 
 }

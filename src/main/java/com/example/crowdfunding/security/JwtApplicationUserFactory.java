@@ -1,7 +1,7 @@
-package com.example.crowdfunding.Security;
+package com.example.crowdfunding.security;
 
 import com.example.crowdfunding.Domain.ApplicationUser;
-import com.example.crowdfunding.Security.model.Authority;
+import com.example.crowdfunding.security.model.Authority;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

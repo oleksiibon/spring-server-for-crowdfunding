@@ -1,4 +1,4 @@
-package com.example.crowdfunding.Security.model;
+package com.example.crowdfunding.security.model;
 
 
 import com.example.crowdfunding.Domain.ApplicationUser;

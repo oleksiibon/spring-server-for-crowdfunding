@@ -8,6 +8,8 @@ import com.example.crowdfunding.repo.DonationRepo;
 import com.example.crowdfunding.repo.GoalRepo;
 import com.example.crowdfunding.repo.UserDetailsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,10 +27,15 @@ public class DonationController {
     }
 
     @PostMapping()
-    public Donation add(@RequestBody DonationDTO donation) {
-        User user = userRepo.findById(donation.userId).orElse(null);
+    public Object add(@RequestBody DonationDTO donation) {
+        User user = userRepo.findByUsername(donation.userId);
         Goal goal = goalRepo.findById(donation.goalId).orElse(null);
-        Donation donationForSave = new Donation(donation.date, user, goal, donation.amount);
-        return donationRepo.save(donationForSave);
+        if (user.getBalance() >= donation.amount) {
+            user.setBalance(user.getBalance() - donation.amount);
+            userRepo.save(user);
+            Donation donationForSave = new Donation(donation.date, user, goal, donation.amount);
+            return donationRepo.save(donationForSave);
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You do not have money");
     }
 }

@@ -41,7 +41,7 @@ public class GoalController {
 
     @PostMapping
     public Goal add(@RequestBody GoalDTO goal){
-        User user = userRepo.findById(goal.creatorId).orElse(null);
+        User user = userRepo.findByUsername(goal.creatorId);
         Category category = categoryRepo.findById(goal.categoryId).orElse(null);
         Goal goalForSave = new Goal(goal.name, goal.picture, goal.cost, user, category, goal.description);
         return goalRepo.save(goalForSave);

@@ -9,8 +9,8 @@ public class UserDTO {
     public Integer balance;
     public Integer amount;
 
-    of(User user) {
-
-    }
+//    of(User user) {
+//
+//    }
 
 }

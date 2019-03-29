@@ -1,6 +1,8 @@
 package com.example.crowdfunding.Domain;
 
+import com.example.crowdfunding.view.Views;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -11,6 +13,7 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonView(Views.Public.class)
     private LocalDate date;
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -70,7 +73,7 @@ public class Donation {
     public void setAmount(Integer amount) {
         this.amount = amount;
     }
-
+    @JsonView(Views.Public.class)
     private Integer amount;
 
 }

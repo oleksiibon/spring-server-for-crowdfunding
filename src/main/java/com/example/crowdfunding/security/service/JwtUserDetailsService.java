@@ -1,7 +1,7 @@
-package com.example.crowdfunding.Security.service;
+package com.example.crowdfunding.security.service;
 
 import com.example.crowdfunding.Domain.ApplicationUser;
-import com.example.crowdfunding.Security.JwtApplicationUserFactory;
+import com.example.crowdfunding.security.JwtApplicationUserFactory;
 import com.example.crowdfunding.repo.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

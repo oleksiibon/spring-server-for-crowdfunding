@@ -1,4 +1,4 @@
-package com.example.crowdfunding.Security.controller;
+package com.example.crowdfunding.security.controller;
 
 public class JwtAuthenticationRequest {
 
