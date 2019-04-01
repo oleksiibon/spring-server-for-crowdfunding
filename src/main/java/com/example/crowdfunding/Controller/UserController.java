@@ -31,4 +31,12 @@ public class UserController {
     public User getUsers(@PathVariable String username) {
         return userRepo.findByUsername(username);
     }
+    @PutMapping("{username}")
+    public int addMoney(@PathVariable String username, @RequestBody User user) {
+        User newUser = userRepo.findByUsername(username);
+        newUser.setBalance(newUser.getBalance() + user.getBalance());
+        userRepo.save(newUser);
+        return user.getBalance();
+    }
+
 }

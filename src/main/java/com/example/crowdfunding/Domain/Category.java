@@ -1,6 +1,8 @@
 package com.example.crowdfunding.Domain;
 
+import com.example.crowdfunding.view.Views;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -10,7 +12,9 @@ import java.util.Set;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(Views.Public.class)
     private Long id;
+    @JsonView(Views.Public.class)
     private String name;
     @OneToMany(mappedBy = "category")
     @JsonIgnore

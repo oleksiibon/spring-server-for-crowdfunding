@@ -7,6 +7,8 @@ import com.example.crowdfunding.Domain.User;
 import com.example.crowdfunding.repo.DonationRepo;
 import com.example.crowdfunding.repo.GoalRepo;
 import com.example.crowdfunding.repo.UserDetailsRepo;
+import com.example.crowdfunding.view.Views;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +27,12 @@ public class DonationController {
 
     public DonationController() {
     }
-
+    @JsonView(Views.Public.class)
     @PostMapping()
     public Object add(@RequestBody DonationDTO donation) {
+        if (donation.amount < 0) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Amount must be more, then 0");
+        }
         User user = userRepo.findByUsername(donation.userId);
         Goal goal = goalRepo.findById(donation.goalId).orElse(null);
         if (user.getBalance() >= donation.amount) {

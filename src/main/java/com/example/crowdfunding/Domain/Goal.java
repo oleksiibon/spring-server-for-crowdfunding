@@ -1,5 +1,8 @@
 package com.example.crowdfunding.Domain;
 
+import com.example.crowdfunding.view.Views;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -8,18 +11,26 @@ import java.util.Set;
 public class Goal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(Views.Public.class)
     private Long id;
+    @JsonView(Views.Public.class)
     private String name;
+    @JsonView(Views.Public.class)
     private String picture;
+    @JsonView(Views.Public.class)
     private Integer cost;
+    @JsonView(Views.Public.class)
     private String description;
     @ManyToOne
+    @JsonView(Views.FullGoal.class)
     @JoinColumn(name = "creator_id")
     private User creator;
     @ManyToOne
+    @JsonView(Views.Public.class)
     @JoinColumn(name = "category_id")
     private Category category;
     @OneToMany(mappedBy = "goal")
+    @JsonView(Views.FullGoal.class)
     private Set<Donation> donations;
 
 

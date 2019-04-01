@@ -7,6 +7,8 @@ import com.example.crowdfunding.Domain.User;
 import com.example.crowdfunding.repo.CategoryRepo;
 import com.example.crowdfunding.repo.GoalRepo;
 import com.example.crowdfunding.repo.UserDetailsRepo;
+import com.example.crowdfunding.view.Views;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,12 +29,13 @@ public class GoalController {
         this.userRepo = userRepo;
         this.categoryRepo = categoryRepo;
     }
-
+    @JsonView(Views.FullGoal.class)
     @GetMapping
     public List<Goal> goals() {
         return goalRepo.findAll();
     }
 
+    @JsonView(Views.FullGoal.class)
     @GetMapping("{id}")
     public Goal goal(@PathVariable("id") Goal goal) {
         return goal;

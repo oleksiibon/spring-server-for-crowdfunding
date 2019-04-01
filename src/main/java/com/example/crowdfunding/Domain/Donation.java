@@ -16,12 +16,12 @@ public class Donation {
     @JsonView(Views.Public.class)
     private LocalDate date;
     @ManyToOne
+    @JsonView(Views.FullGoal.class)
     @JoinColumn(name = "user_id")
-    @JsonIgnore
     private User user;
     @ManyToOne
+    @JsonView(Views.User.class)
     @JoinColumn(name = "goal_id")
-    @JsonIgnore
     private Goal goal;
 
     public Donation(LocalDate date, User user, Goal goal, Integer amount) {
